@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Login</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Admin Login</h1>
+
+        <p>Login to the Admin Panel</p>
+
+        <form action="/admin/login" method="post">
+
+            <input type="text"
+                   name="username"
+                   placeholder="Enter Admin Username"
+                   required>
+
+            <input type="password"
+                   name="password"
+                   placeholder="Enter Admin Password"
+                   required>
+
+            <button type="submit" class="btn">
+                Admin Login
+            </button>
+
+        </form>
+
+        <p th:if="${message}" th:text="${message}"></p>
+
+        <a href="/">Back to Home</a>
+
+    </div>
+
+</body>
+</html>

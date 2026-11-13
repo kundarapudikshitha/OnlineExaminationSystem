@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Exams</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Available Examinations</h1>
+
+    <h3>
+        Welcome,
+        <span th:text="${student.name}">Student</span>
+    </h3>
+
+    <p>Select an examination to view its details.</p>
+
+    <table border="1" cellpadding="10"
+           style="width:100%; border-collapse:collapse;">
+
+        <thead>
+            <tr>
+                <th>Exam ID</th>
+                <th>Exam Title</th>
+                <th>Description</th>
+                <th>Duration</th>
+                <th>Total Marks</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr th:each="exam : ${exams}">
+
+                <td th:text="${exam.id}"></td>
+
+                <td th:text="${exam.title}"></td>
+
+                <td th:text="${exam.description}"></td>
+
+                <td th:text="${exam.durationMinutes} + ' minutes'"></td>
+
+                <td th:text="${exam.totalMarks}"></td>
+
+                <td>
+                    <a th:href="@{/exam-instructions/{examId}(examId=${exam.id})}"
+                       class="btn">
+                        Start Exam
+                    </a>
+                </td>
+
+            </tr>
+
+            <tr th:if="${#lists.isEmpty(exams)}">
+                <td colspan="6">
+                    No exams available currently.
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <br>
+
+    <a th:href="@{/dashboard}">Back to Dashboard</a>
+
+</div>
+
+</body>
+</html>

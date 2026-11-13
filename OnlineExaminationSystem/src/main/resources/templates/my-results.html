@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>My Examination Results</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>My Examination Results</h1>
+
+    <p>View your examination performance and history.</p>
+
+    <table border="1" cellpadding="10"
+           style="width:100%; border-collapse:collapse;">
+
+        <thead>
+            <tr>
+                <th>Result ID</th>
+                <th>Exam Name</th>
+                <th>Obtained Marks</th>
+                <th>Total Marks</th>
+                <th>Percentage</th>
+                <th>Status</th>
+                <th>Submitted At</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr th:each="result : ${results}">
+
+                <td th:text="${result.id}"></td>
+
+                <td th:text="${result.exam.title}"></td>
+
+                <td th:text="${result.score}"></td>
+
+                <td th:text="${result.totalMarks}"></td>
+
+                <td th:text="${result.totalMarks > 0 ?
+                    #numbers.formatDecimal(
+                        result.score * 100.0 / result.totalMarks,
+                        1, 2) + '%' : '0.00%'}">
+                </td>
+
+                <td>
+                    <span
+                        th:text="${result.totalMarks > 0
+                        and result.score * 100.0 / result.totalMarks >= 40
+                        ? 'Pass' : 'Fail'}"
+
+                        th:style="${result.totalMarks > 0
+                        and result.score * 100.0 / result.totalMarks >= 40}
+                        ? 'color:green; font-weight:bold;'
+                        : 'color:red; font-weight:bold;'">
+                    </span>
+                </td>
+
+                <td th:text="${result.submittedAt != null ?
+                    #temporals.format(result.submittedAt,
+                    'dd-MM-yyyy HH:mm') : 'Not available'}">
+                </td>
+
+            </tr>
+
+            <tr th:if="${#lists.isEmpty(results)}">
+                <td colspan="7">
+                    You have not submitted any examinations yet.
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <br><br>
+
+    <a th:href="@{/dashboard}" class="btn">
+        Back to Dashboard
+    </a>
+
+</div>
+
+</body>
+</html>

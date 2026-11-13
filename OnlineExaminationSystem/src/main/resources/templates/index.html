@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Online Examination System</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Online Examination System</h1>
+
+        <p>Welcome to our Online Examination Portal</p>
+
+        <p>
+            Take examinations online, submit your answers
+            and view your results easily.
+        </p>
+
+        <hr>
+
+        <h2>Student Portal</h2>
+
+        <a th:href="@{/login}" class="btn">
+            Student Login
+        </a>
+
+        <a th:href="@{/register}" class="btn">
+            Student Registration
+        </a>
+
+        <hr>
+
+        <h2>Administration</h2>
+
+        <p>Manage examinations, questions, students and results.</p>
+
+        <a th:href="@{/admin/login}" class="btn">
+            Admin Login
+        </a>
+
+        <hr>
+
+        <p>Online Examination System &copy; 2026</p>
+
+    </div>
+
+</body>
+</html>

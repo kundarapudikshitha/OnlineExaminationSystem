@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <style>
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .stat-card {
+            background: #f1f4f9;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-card h2 {
+            color: #2563eb;
+        }
+
+        .menu-section {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Admin Dashboard</h1>
+
+    <h2>Welcome, Admin!</h2>
+
+    <p>Manage your online examinations here.</p>
+
+    <hr>
+
+    <h2>Dashboard Overview</h2>
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <h3>Total Students</h3>
+            <h2 th:text="${totalStudents}">0</h2>
+        </div>
+
+        <div class="stat-card">
+            <h3>Total Exams</h3>
+            <h2 th:text="${totalExams}">0</h2>
+        </div>
+
+        <div class="stat-card">
+            <h3>Total Questions</h3>
+            <h2 th:text="${totalQuestions}">0</h2>
+        </div>
+
+        <div class="stat-card">
+            <h3>Submissions</h3>
+            <h2 th:text="${totalSubmissions}">0</h2>
+        </div>
+
+        <div class="stat-card">
+            <h3>Passed</h3>
+            <h2 th:text="${passedSubmissions}">0</h2>
+        </div>
+
+        <div class="stat-card">
+            <h3>Failed</h3>
+            <h2 th:text="${failedSubmissions}">0</h2>
+        </div>
+
+    </div>
+
+    <h3>
+        Overall Pass Percentage:
+        <span th:text="${#numbers.formatDecimal(passPercentage, 1, 2)} + '%'">
+        </span>
+    </h3>
+
+    <hr>
+
+    <div class="menu-section">
+
+        <h3>Admin Menu</h3>
+
+        <a href="/admin/create-exam" class="btn">
+            Create Exam
+        </a>
+
+        <a href="/admin/manage-exams" class="btn">
+            Manage Exams
+        </a>
+
+        <a href="/admin/manage-exams" class="btn">
+            Manage Questions
+        </a>
+
+        <a href="/admin/manage-students" class="btn">
+            Manage Students
+        </a>
+
+        <a href="/admin/view-results" class="btn">
+            View All Results
+        </a>
+
+        <a href="/admin/statistics" class="btn">
+            Detailed Statistics
+        </a>
+
+        <a href="/admin/logout" class="btn">
+            Logout
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

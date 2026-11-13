@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Exam Instructions</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Exam Instructions</h1>
+
+    <h2 th:text="${exam.title}"></h2>
+
+    <p th:text="${exam.description}"></p>
+
+    <hr>
+
+    <h3>Examination Details</h3>
+
+    <p>
+        <strong>Duration:</strong>
+        <span th:text="${exam.durationMinutes}"></span> minutes
+    </p>
+
+    <p>
+        <strong>Total Marks:</strong>
+        <span th:text="${exam.totalMarks}"></span>
+    </p>
+
+    <p>
+        <strong>Total Questions:</strong>
+        <span th:text="${#lists.size(questions)}"></span>
+    </p>
+
+    <hr>
+
+    <h3>Important Instructions</h3>
+
+    <ol style="text-align:left;">
+        <li>Read each question carefully.</li>
+        <li>Select only one answer for each question.</li>
+        <li>Complete the examination within the given time.</li>
+        <li>Do not refresh or close the browser during the examination.</li>
+        <li>Submit your answers before the timer reaches zero.</li>
+        <li>After submission, you cannot change your answers.</li>
+    </ol>
+
+    <hr>
+
+    <p>
+        Please read all instructions carefully before starting.
+    </p>
+
+    <a th:href="@{/start-exam/{examId}(examId=${exam.id})}"
+       class="btn">
+        I Agree – Start Exam
+    </a>
+
+    <br><br>
+
+    <a href="/available-exams">Back to Available Exams</a>
+
+</div>
+
+</body>
+</html>

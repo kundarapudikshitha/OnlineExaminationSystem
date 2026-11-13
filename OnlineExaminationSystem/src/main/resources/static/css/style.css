@@ -1,0 +1,267 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f1f4f9;
+}
+
+.container {
+    width: 60%;
+    margin: 150px auto;
+    padding: 40px;
+    text-align: center;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: #243b64;
+}
+
+p {
+    color: #555;
+    font-size: 18px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 22px;
+    margin: 10px;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.btn:hover {
+    background: #1d4ed8;
+}
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+	/* ==============================
+	   GLOBAL STYLES
+	============================== */
+
+	* {
+	    box-sizing: border-box;
+	}
+
+	body {
+	    margin: 0;
+	    padding: 0;
+	    font-family: Arial, sans-serif;
+	    background: #f1f4f9;
+	    color: #333;
+	}
+
+	/* ==============================
+	   MAIN CONTAINER
+	============================== */
+
+	.container {
+	    width: 60%;
+	    max-width: 1000px;
+	    margin: 70px auto;
+	    padding: 40px;
+	    text-align: center;
+	    background: white;
+	    border-radius: 12px;
+	    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+	}
+
+	/* ==============================
+	   HEADINGS AND PARAGRAPHS
+	============================== */
+
+	h1 {
+	    color: #243b64;
+	    margin-bottom: 15px;
+	}
+
+	h2 {
+	    color: #243b64;
+	}
+
+	h3 {
+	    color: #334155;
+	}
+
+	p {
+	    color: #555;
+	    font-size: 16px;
+	    line-height: 1.6;
+	}
+
+	/* ==============================
+	   BUTTONS AND LINKS
+	============================== */
+
+	.btn {
+	    display: inline-block;
+	    padding: 12px 22px;
+	    margin: 10px;
+	    background: #2563eb;
+	    color: white;
+	    text-decoration: none;
+	    border: none;
+	    border-radius: 6px;
+	    cursor: pointer;
+	    font-size: 15px;
+	    transition: background 0.3s ease;
+	}
+
+	.btn:hover {
+	    background: #1d4ed8;
+	}
+
+	button {
+	    font-family: Arial, sans-serif;
+	}
+
+	/* ==============================
+	   FORM INPUTS
+	============================== */
+
+	input,
+	select,
+	textarea {
+	    width: 100%;
+	    padding: 12px;
+	    margin: 10px 0;
+	    border: 1px solid #ccc;
+	    border-radius: 6px;
+	    font-size: 15px;
+	    font-family: Arial, sans-serif;
+	}
+
+	input:focus,
+	select:focus,
+	textarea:focus {
+	    outline: none;
+	    border-color: #2563eb;
+	    box-shadow: 0 0 4px rgba(37, 99, 235, 0.3);
+	}
+
+	textarea {
+	    resize: vertical;
+	    min-height: 100px;
+	}
+
+	/* ==============================
+	   FORM LABELS
+	============================== */
+
+	label {
+	    display: block;
+	    text-align: left;
+	    margin-top: 12px;
+	    font-weight: bold;
+	    color: #334155;
+	}
+
+	/* ==============================
+	   ERROR AND SUCCESS MESSAGES
+	============================== */
+
+	.error {
+	    color: #dc2626;
+	    font-size: 14px;
+	    margin: 5px 0 10px;
+	}
+
+	.success {
+	    color: #15803d;
+	    font-size: 14px;
+	    margin: 10px 0;
+	}
+
+	/* ==============================
+	   TABLES
+	============================== */
+
+	table {
+	    width: 100%;
+	    border-collapse: collapse;
+	    margin: 20px 0;
+	    background: white;
+	}
+
+	th,
+	td {
+	    padding: 12px;
+	    border: 1px solid #ddd;
+	    text-align: center;
+	}
+
+	th {
+	    background: #243b64;
+	    color: white;
+	}
+
+	tr:nth-child(even) {
+	    background: #f8fafc;
+	}
+
+	/* ==============================
+	   HORIZONTAL LINE
+	============================== */
+
+	hr {
+	    border: none;
+	    border-top: 1px solid #ddd;
+	    margin: 25px 0;
+	}
+
+	/* ==============================
+	   RESPONSIVE DESIGN
+	============================== */
+
+	@media (max-width: 768px) {
+
+	    .container {
+	        width: 90%;
+	        margin: 30px auto;
+	        padding: 25px 18px;
+	    }
+
+	    h1 {
+	        font-size: 25px;
+	    }
+
+	    p {
+	        font-size: 15px;
+	    }
+
+	    .btn {
+	        display: block;
+	        width: 100%;
+	        margin: 10px 0;
+	    }
+
+	    table {
+	        font-size: 13px;
+	    }
+
+	    th,
+	    td {
+	        padding: 8px;
+	    }
+	}
+
+
+.success {
+    color: green;
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin: 5px 0 10px;
+}

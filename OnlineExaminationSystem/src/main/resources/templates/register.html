@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Student Registration</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Student Registration</h1>
+
+        <p>Register to attend online examinations</p>
+
+        <!-- Success Message -->
+        <p th:if="${successMessage}"
+           th:text="${successMessage}"
+           class="success">
+        </p>
+
+        <!-- Error Message -->
+        <p th:if="${errorMessage}"
+           th:text="${errorMessage}"
+           class="error">
+        </p>
+
+        <form th:action="@{/register}"
+              th:object="${student}"
+              method="post">
+
+            <!-- Name -->
+            <input type="text"
+                   th:field="*{name}"
+                   placeholder="Enter your full name"
+                   required>
+
+            <p class="error"
+               th:if="${#fields.hasErrors('name')}"
+               th:errors="*{name}">
+            </p>
+
+            <!-- Email -->
+            <input type="email"
+                   th:field="*{email}"
+                   placeholder="Enter your email"
+                   required>
+
+            <p class="error"
+               th:if="${#fields.hasErrors('email')}"
+               th:errors="*{email}">
+            </p>
+
+            <!-- Password -->
+            <input type="password"
+                   th:field="*{password}"
+                   placeholder="Create your password"
+                   required>
+
+            <p class="error"
+               th:if="${#fields.hasErrors('password')}"
+               th:errors="*{password}">
+            </p>
+
+            <!-- Register Button -->
+            <button type="submit" class="btn">
+                Register
+            </button>
+
+        </form>
+
+        <p>
+            Already registered?
+            <a th:href="@{/login}">Login here</a>
+        </p>
+
+        <a th:href="@{/}">Back to Home</a>
+
+    </div>
+
+</body>
+</html>

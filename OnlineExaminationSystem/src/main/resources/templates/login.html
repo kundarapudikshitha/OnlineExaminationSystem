@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Login</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Student Login</h1>
+
+        <p>Login to your examination account</p>
+
+        <!-- Login Error Message -->
+        <p th:if="${message}"
+           th:text="${message}"
+           class="error">
+        </p>
+
+        <!-- Login Form -->
+        <form th:action="@{/login}" method="post">
+
+            <input type="email"
+                   name="email"
+                   placeholder="Enter your email"
+                   autocomplete="username"
+                   required>
+
+            <input type="password"
+                   name="password"
+                   placeholder="Enter your password"
+                   autocomplete="current-password"
+                   required>
+
+            <button type="submit" class="btn">
+                Login
+            </button>
+
+        </form>
+
+        <p>
+            New student?
+            <a th:href="@{/register}">Register here</a>
+        </p>
+
+        <p>
+            <a th:href="@{/}">Back to Home</a>
+        </p>
+
+    </div>
+
+</body>
+</html>

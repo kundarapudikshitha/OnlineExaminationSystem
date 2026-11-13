@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Manage Questions</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Manage Questions</h1>
+
+    <h3 th:text="${exam.title}"></h3>
+
+    <p>View all questions added to this examination.</p>
+
+    <a th:href="@{/admin/add-question/{examId}(examId=${exam.id})}"
+       class="btn">
+        Add New Question
+    </a>
+
+    <br><br>
+
+    <table border="1" cellpadding="10"
+           style="width:100%; border-collapse:collapse;">
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Question</th>
+                <th>Option A</th>
+                <th>Option B</th>
+                <th>Option C</th>
+                <th>Option D</th>
+                <th>Correct Answer</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr th:each="question : ${questions}">
+
+                <td th:text="${question.id}"></td>
+
+                <td th:text="${question.questionText}"></td>
+
+                <td th:text="${question.optionA}"></td>
+
+                <td th:text="${question.optionB}"></td>
+
+                <td th:text="${question.optionC}"></td>
+
+                <td th:text="${question.optionD}"></td>
+
+                <td th:text="${question.correctAnswer}"></td>
+
+                <td>
+                    <a th:href="@{/admin/edit-question/{examId}/{questionId}
+                        (examId=${exam.id}, questionId=${question.id})}">
+                        Edit
+                    </a>
+
+                    |
+
+                    <form th:action="@{/admin/delete-question/{examId}/{questionId}
+                            (examId=${exam.id}, questionId=${question.id})}"
+                          method="post"
+                          style="display:inline;"
+                          onsubmit="return confirm('Are you sure you want to delete this question?');">
+
+                        <button type="submit">
+                            Delete
+                        </button>
+
+                    </form>
+                </td>
+
+            </tr>
+
+            <tr th:if="${#lists.isEmpty(questions)}">
+                <td colspan="8">No questions available.</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <br>
+
+    <a href="/admin/manage-exams">Back to Manage Exams</a>
+
+</div>
+
+</body>
+</html>

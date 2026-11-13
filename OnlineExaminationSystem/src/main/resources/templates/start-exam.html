@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Start Examination</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1 th:text="${exam.title}"></h1>
+
+    <!-- Countdown Timer -->
+    <h3 style="color:red;">
+        Time Remaining:
+        <span id="timer"></span>
+    </h3>
+
+    <p th:text="${exam.description}"></p>
+
+    <h3>
+        Duration:
+        <span th:text="${exam.durationMinutes}"></span>
+        Minutes
+    </h3>
+
+    <h3>
+        Total Marks:
+        <span th:text="${exam.totalMarks}"></span>
+    </h3>
+
+    <hr>
+
+    <form action="/submit-exam" method="post">
+
+        <input type="hidden" name="examId"
+               th:value="${exam.id}">
+
+        <div th:each="question, status : ${questions}">
+
+            <h3>
+                Question
+                <span th:text="${status.count}"></span>:
+            </h3>
+
+            <p th:text="${question.questionText}"></p>
+
+            <input type="radio"
+                   th:name="'answers[' + ${question.id} + ']'"
+                   value="A" required>
+            <span th:text="${question.optionA}"></span>
+            <br><br>
+
+            <input type="radio"
+                   th:name="'answers[' + ${question.id} + ']'"
+                   value="B">
+            <span th:text="${question.optionB}"></span>
+            <br><br>
+
+            <input type="radio"
+                   th:name="'answers[' + ${question.id} + ']'"
+                   value="C">
+            <span th:text="${question.optionC}"></span>
+            <br><br>
+
+            <input type="radio"
+                   th:name="'answers[' + ${question.id} + ']'"
+                   value="D">
+            <span th:text="${question.optionD}"></span>
+
+            <hr>
+
+        </div>
+
+        <button type="submit" class="btn">
+            Submit Exam
+        </button>
+
+    </form>
+
+</div>
+
+<!-- Server-side Remaining Time Timer -->
+<script th:inline="javascript">
+
+    let timeLeft = /*[[${remainingSeconds}]]*/ 1800;
+
+    const form = document.querySelector("form");
+    const timerElement = document.getElementById("timer");
+
+    let timerInterval;
+    let submitted = false;
+
+    function updateTimer() {
+
+        let minutes = Math.floor(timeLeft / 60);
+        let seconds = timeLeft % 60;
+
+        timerElement.innerText =
+            minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+
+        if (timeLeft <= 0) {
+
+            clearInterval(timerInterval);
+
+            timerElement.innerText = "00:00";
+
+            if (!submitted) {
+                submitted = true;
+
+                alert("Time is up! Your exam will be submitted.");
+
+                form.submit();
+            }
+
+            return;
+        }
+
+        timeLeft--;
+    }
+
+    // Display initial remaining time
+    updateTimer();
+
+    // Update timer every second
+    timerInterval = setInterval(updateTimer, 1000);
+
+    // Prevent multiple manual submissions
+    form.addEventListener("submit", function () {
+        submitted = true;
+        clearInterval(timerInterval);
+    });
+
+</script>
+
+</body>
+</html>

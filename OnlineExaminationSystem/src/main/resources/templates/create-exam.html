@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Create Exam</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Create New Exam</h1>
+    <p>Enter the examination details below</p>
+
+    <form th:action="@{/admin/create-exam}"
+          th:object="${exam}"
+          method="post">
+
+        <input type="text"
+               th:field="*{title}"
+               placeholder="Enter Exam Title"
+               required>
+
+        <p class="error"
+           th:if="${#fields.hasErrors('title')}"
+           th:errors="*{title}"></p>
+
+        <br>
+
+        <textarea th:field="*{description}"
+                  placeholder="Enter Exam Description"
+                  rows="4"
+                  required></textarea>
+
+        <p class="error"
+           th:if="${#fields.hasErrors('description')}"
+           th:errors="*{description}"></p>
+
+        <br><br>
+
+        <input type="number"
+               th:field="*{durationMinutes}"
+               placeholder="Duration in Minutes"
+               min="1"
+               required>
+
+        <p class="error"
+           th:if="${#fields.hasErrors('durationMinutes')}"
+           th:errors="*{durationMinutes}"></p>
+
+        <br>
+
+        <input type="number"
+               th:field="*{totalMarks}"
+               placeholder="Total Marks"
+               min="0"
+               required>
+
+        <p class="error"
+           th:if="${#fields.hasErrors('totalMarks')}"
+           th:errors="*{totalMarks}"></p>
+
+        <br>
+
+        <button type="submit" class="btn">
+            Create Exam
+        </button>
+
+    </form>
+
+    <br>
+
+    <a href="/admin/dashboard">Back to Dashboard</a>
+
+</div>
+
+</body>
+</html>

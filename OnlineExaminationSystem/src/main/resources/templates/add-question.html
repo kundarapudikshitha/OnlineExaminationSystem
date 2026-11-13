@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Add Question</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Add Question</h1>
+    <h3 th:text="${exam.title}"></h3>
+
+    <p>Enter the question and its four options below.</p>
+
+    <form th:action="@{/admin/add-question/{examId}(examId=${exam.id})}"
+          th:object="${question}"
+          method="post">
+
+        <textarea th:field="*{questionText}"
+                  placeholder="Enter Question"
+                  rows="4"
+                  required></textarea>
+
+        <p class="error"
+           th:if="${#fields.hasErrors('questionText')}"
+           th:errors="*{questionText}"></p>
+
+        <br>
+
+        <input type="text"
+               th:field="*{optionA}"
+               placeholder="Option A"
+               required>
+
+        <p class="error"
+           th:if="${#fields.hasErrors('optionA')}"
+           th:errors="*{optionA}"></p>
+
+        <br>
+
+        <input type="text"
+               th:field="*{optionB}"
+               placeholder="Option B"
+               required>
+
+        <p class="error"
+           th:if="${#fields.hasErrors('optionB')}"
+           th:errors="*{optionB}"></p>
+
+        <br>
+
+        <input type="text"
+               th:field="*{optionC}"
+               placeholder="Option C"
+               required>
+
+        <p class="error"
+           th:if="${#fields.hasErrors('optionC')}"
+           th:errors="*{optionC}"></p>
+
+        <br>
+
+        <input type="text"
+               th:field="*{optionD}"
+               placeholder="Option D"
+               required>
+
+        <p class="error"
+           th:if="${#fields.hasErrors('optionD')}"
+           th:errors="*{optionD}"></p>
+
+        <br>
+
+        <label>Select Correct Answer:</label>
+
+        <select th:field="*{correctAnswer}" required>
+
+            <option value="">Select Answer</option>
+            <option value="A">Option A</option>
+            <option value="B">Option B</option>
+            <option value="C">Option C</option>
+            <option value="D">Option D</option>
+
+        </select>
+
+        <p class="error"
+           th:if="${#fields.hasErrors('correctAnswer')}"
+           th:errors="*{correctAnswer}"></p>
+
+        <br>
+
+        <button type="submit" class="btn">
+            Save Question
+        </button>
+
+    </form>
+
+    <br>
+
+    <a th:href="@{/admin/manage-questions/{examId}(examId=${exam.id})}">
+        Back to Manage Questions
+    </a>
+
+</div>
+
+</body>
+</html>
